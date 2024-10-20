@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\TechnologyPractice.Services\TechnologyPractice.Services.csproj" />
   </ItemGroup>
 
 </Project>
