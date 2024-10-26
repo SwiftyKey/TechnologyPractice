@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TechnologyPractice.Models;
 using TechnologyPractice.Services;
 
 namespace TechnologyPractice.Controllers;
@@ -9,8 +10,8 @@ public class StringHandlerController : Controller
 {
 	[HttpGet()]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
-	public ActionResult<string> Get(string input)
+	public ActionResult<string> Get([FromQuery] InputString input)
 	{
-		return Ok(StringHandler.Reverse(input));
+		return Ok(StringHandler.Reverse(input.Text));
 	}
 }
