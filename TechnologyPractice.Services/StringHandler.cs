@@ -26,4 +26,13 @@ public static class StringHandler
 
 		return result;
 	}
+
+	public static Dictionary<char, int> GetCountSymbols(string text)
+	{
+		var counter = new Dictionary<char, int>();
+		foreach (char c in text.ToHashSet())
+			counter[c] = text.Count(x => x == c);
+
+		return counter;
+	}
 }
