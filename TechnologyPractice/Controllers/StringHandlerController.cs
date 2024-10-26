@@ -10,8 +10,14 @@ public class StringHandlerController : Controller
 {
 	[HttpGet()]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
-	public ActionResult<string> Get([FromQuery] InputString input)
+	public ActionResult<string> Get([FromQuery] RequestModel input)
 	{
-		return Ok(StringHandler.Reverse(input.Text));
+		var processedString = StringHandler.Reverse(input.Text);
+		var response = new ResponseModel()
+		{
+			ProcessedString = processedString,
+			Counter = StringHandler.GetCountSymbols(processedString)
+		};
+		return Ok(response);
 	}
 }

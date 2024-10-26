@@ -2,7 +2,7 @@
 
 namespace TechnologyPractice.Models;
 
-public class InputString
+public class RequestModel
 {
 	[Required]
 	[LowercaseEnglishLetters]
