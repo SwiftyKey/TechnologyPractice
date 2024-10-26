@@ -1,4 +1,6 @@
-﻿namespace TechnologyPractice.Services;
+﻿using System.Text.RegularExpressions;
+
+namespace TechnologyPractice.Services;
 
 public static class StringHandler
 {
@@ -34,5 +36,11 @@ public static class StringHandler
 			counter[c] = text.Count(x => x == c);
 
 		return counter;
+	}
+
+	public static string GetLargestSubstring(string text)
+	{
+		Regex rg = new(@"[aeiouy][a-z]*[aeiouy]|[aeiouy]");
+		return rg.Match(text).Value;
 	}
 }

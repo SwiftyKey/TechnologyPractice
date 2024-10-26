@@ -16,7 +16,8 @@ public class StringHandlerController : Controller
 		var response = new ResponseModel()
 		{
 			ProcessedString = processedString,
-			Counter = StringHandler.GetCountSymbols(processedString)
+			Counter = StringHandler.GetCountSymbols(processedString),
+			LargestSubstring = StringHandler.GetLargestSubstring(processedString)
 		};
 		return Ok(response);
 	}
