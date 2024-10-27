@@ -17,7 +17,8 @@ public class StringHandlerController : Controller
 		{
 			ProcessedString = processedString,
 			Counter = StringHandler.GetCountSymbols(processedString),
-			LargestSubstring = StringHandler.GetLargestSubstring(processedString)
+			LargestSubstring = StringHandler.GetLargestSubstring(processedString),
+			SortedString = StringHandler.Sort(processedString, input.SortName)
 		};
 		return Ok(response);
 	}
