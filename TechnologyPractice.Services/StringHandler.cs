@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.IO;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using TechnologyPractice.Services.Sorts;
 
 namespace TechnologyPractice.Services;
 
@@ -42,5 +45,11 @@ public static class StringHandler
 	{
 		Regex rg = new(@"[aeiouy][a-z]*[aeiouy]|[aeiouy]");
 		return rg.Match(text).Value;
+	}
+
+	public static string Sort(string text, string sortName)
+	{
+		var sort = (ISort)Activator.CreateInstance(Type.GetType("TechnologyPractice.Services.Sorts." + sortName));
+		return sort.Sorting(text);
 	}
 }

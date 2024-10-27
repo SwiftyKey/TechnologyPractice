@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace TechnologyPractice.Models;
+namespace TechnologyPractice.Models.Validation;
 
 public class LowercaseEnglishLettersAttribute : ValidationAttribute
 {
