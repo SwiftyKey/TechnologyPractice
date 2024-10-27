@@ -23,6 +23,7 @@ public class StringHandlerController : Controller
 			SortedString = StringHandler.Sort(processedString, input.SortName),
 			TruncatedString = await StringHandler.Truncate(processedString, httpClient)
 		};
+
 		return Ok(response);
 	}
 }
