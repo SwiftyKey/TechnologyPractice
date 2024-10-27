@@ -1,6 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using TechnologyPractice.Services.Sorts;
 
 namespace TechnologyPractice.Services;
@@ -51,5 +50,13 @@ public static class StringHandler
 	{
 		var sort = (ISort)Activator.CreateInstance(Type.GetType("TechnologyPractice.Services.Sorts." + sortName));
 		return sort.Sorting(text);
+	}
+
+	public static async Task<string> Truncate(string text, HttpClient client)
+	{
+
+		var index = await RandomNumberClient.GetValue(text.Length, client);
+		Debug.WriteLine($"Random index: {index}");
+		return text.Remove(index, 1);
 	}
 }
