@@ -17,6 +17,7 @@ builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"
 builder.Services.AddSingleton<RandomNumberClient>();
 builder.Services.AddScoped<StringHandler>();
 builder.Services.AddSingleton<BlackListService>();
+builder.Services.AddSingleton<RequestLimitService>();
 
 var app = builder.Build();
 
@@ -32,6 +33,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseMiddleware<RequestLimitMiddleware>();
 app.UseMiddleware<BlackListMiddleware>();
 
 app.Run();
