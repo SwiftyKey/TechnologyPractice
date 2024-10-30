@@ -1,15 +1,24 @@
-﻿using System.Text.RegularExpressions;
+﻿using Microsoft.Extensions.Options;
+using System.Text.RegularExpressions;
+using TechnologyPractice.Services.Config;
 
 namespace TechnologyPractice.Services;
 
-public static class RandomNumberClient
+public class RandomNumberClient
 {
-	private static readonly Regex _rg = new(@"\d+");
-	public static string Url { get; set; } = "http://www.randomnumberapi.com/api/v1.0/random?max=";
+	private readonly Regex _rg = new(@"\d+");
+	private string Url { get; set; } = "";
+	private readonly HttpClient _httpClient;
 
-	public static async Task<int> GetValue(int maxValue, HttpClient client)
+	public RandomNumberClient(IHttpClientFactory httpClientFactory, IOptions<AppConfig> options)
 	{
-		var response = await client.GetAsync(Url + maxValue);
+		_httpClient = httpClientFactory.CreateClient();
+		Url = options.Value.RandomApi;
+	}
+
+	public async Task<int> GetValue(int maxValue)
+	{
+		var response = await _httpClient.GetAsync(Url + maxValue);
 		int value;
 
 		if (response.IsSuccessStatusCode)

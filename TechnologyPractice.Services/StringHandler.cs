@@ -4,11 +4,18 @@ using TechnologyPractice.Services.Sorts;
 
 namespace TechnologyPractice.Services;
 
-public static class StringHandler
+public class StringHandler
 {
-	public static bool IsEven(int length) => length % 2 == 0;
+	private readonly RandomNumberClient _randomNumberClient;
 
-	public static string ReverseEvenString(string str)
+	public StringHandler(RandomNumberClient randomNumberClient)
+	{
+		_randomNumberClient = randomNumberClient;
+	}
+
+	public bool IsEven(int length) => length % 2 == 0;
+
+	public string ReverseEvenString(string str)
 	{
 		string firstPart = str[..(str.Length / 2)];
 		string secondPart = str[(str.Length / 2)..];
@@ -16,12 +23,12 @@ public static class StringHandler
 		return new string(firstPart.Reverse().Concat(secondPart.Reverse()).ToArray());
 	}
 
-	public static string ReverseOddString(string str)
+	public string ReverseOddString(string str)
 	{
 		return new string(str.Reverse().ToArray()) + str;
 	}
 
-	public static string Reverse(string source)
+	public string Reverse(string source)
 	{
 		string result;
 
@@ -31,7 +38,7 @@ public static class StringHandler
 		return result;
 	}
 
-	public static Dictionary<char, int> GetCountSymbols(string text)
+	public Dictionary<char, int> GetCountSymbols(string text)
 	{
 		var counter = new Dictionary<char, int>();
 		foreach (char c in text.ToHashSet())
@@ -40,22 +47,21 @@ public static class StringHandler
 		return counter;
 	}
 
-	public static string GetLargestSubstring(string text)
+	public string GetLargestSubstring(string text)
 	{
 		Regex rg = new(@"[aeiouy][a-z]*[aeiouy]|[aeiouy]");
 		return rg.Match(text).Value;
 	}
 
-	public static string Sort(string text, string sortName)
+	public string Sort(string text, string sortName)
 	{
 		var sort = (ISort)Activator.CreateInstance(Type.GetType("TechnologyPractice.Services.Sorts." + sortName));
 		return sort.Sorting(text);
 	}
 
-	public static async Task<string> Truncate(string text, HttpClient client)
+	public async Task<string> Truncate(string text)
 	{
-
-		var index = await RandomNumberClient.GetValue(text.Length, client);
+		var index = await _randomNumberClient.GetValue(text.Length);
 		Debug.WriteLine($"Random index: {index}");
 		return text.Remove(index, 1);
 	}

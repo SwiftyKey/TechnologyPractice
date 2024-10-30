@@ -10,18 +10,21 @@ public class StringHandlerController : Controller
 {
 	[HttpGet()]
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
-	public async Task<ActionResult<string>> Get([FromQuery] RequestModel input, [FromServices] IHttpClientFactory httpClientFactory)
+	public async Task<ActionResult<string>> Get
+	(
+		[FromQuery] RequestModel input,
+		[FromServices] StringHandler stringHandler
+	)
 	{
-		var processedString = StringHandler.Reverse(input.Text);
-		var httpClient = httpClientFactory.CreateClient();
+		var processedString = stringHandler.Reverse(input.Text);
 
 		var response = new ResponseModel()
 		{
 			ProcessedString = processedString,
-			Counter = StringHandler.GetCountSymbols(processedString),
-			LargestSubstring = StringHandler.GetLargestSubstring(processedString),
-			SortedString = StringHandler.Sort(processedString, input.SortName),
-			TruncatedString = await StringHandler.Truncate(processedString, httpClient)
+			Counter = stringHandler.GetCountSymbols(processedString),
+			LargestSubstring = stringHandler.GetLargestSubstring(processedString),
+			SortedString = stringHandler.Sort(processedString, input.SortName),
+			TruncatedString = await stringHandler.Truncate(processedString)
 		};
 
 		return Ok(response);
