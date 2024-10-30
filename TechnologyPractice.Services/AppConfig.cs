@@ -9,4 +9,5 @@ public class AppConfig
 public class Settings
 {
 	public ICollection<string>? BlackList { get; set; }
+	public int ParallelLimit { get; set; }
 }
