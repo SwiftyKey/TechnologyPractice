@@ -7,18 +7,18 @@ namespace TechnologyPractice.Services;
 public class RandomNumberClient
 {
 	private readonly Regex _rg = new(@"\d+");
-	private string Url { get; set; } = "";
+	private readonly string _url;
 	private readonly HttpClient _httpClient;
 
 	public RandomNumberClient(IHttpClientFactory httpClientFactory, IOptions<AppConfig> options)
 	{
 		_httpClient = httpClientFactory.CreateClient();
-		Url = options.Value.RandomApi;
+		_url = options.Value.RandomApi;
 	}
 
 	public async Task<int> GetValue(int maxValue)
 	{
-		var response = await _httpClient.GetAsync(Url + maxValue);
+		var response = await _httpClient.GetAsync(_url + maxValue);
 		int value;
 
 		if (response.IsSuccessStatusCode)

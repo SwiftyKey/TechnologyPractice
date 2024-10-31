@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnologyPractice", "TechnologyPractice\TechnologyPractice.csproj", "{2375C1FB-705B-4115-8066-015F2ABA9E01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnologyPractice", "TechnologyPractice\TechnologyPractice.csproj", "{2375C1FB-705B-4115-8066-015F2ABA9E01}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DCC33582-C61B-4BE0-9006-29410BAFDB9D} = {DCC33582-C61B-4BE0-9006-29410BAFDB9D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnologyPractice.Services", "TechnologyPractice.Services\TechnologyPractice.Services.csproj", "{DCC33582-C61B-4BE0-9006-29410BAFDB9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnologyPractice.Services", "TechnologyPractice.Services\TechnologyPractice.Services.csproj", "{DCC33582-C61B-4BE0-9006-29410BAFDB9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnologyPractice.Tests", "TechnologyPractice.Tests\TechnologyPractice.Tests.csproj", "{59982E33-777C-4F2D-88B9-550E53EF0935}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2375C1FB-705B-4115-8066-015F2ABA9E01} = {2375C1FB-705B-4115-8066-015F2ABA9E01}
+		{DCC33582-C61B-4BE0-9006-29410BAFDB9D} = {DCC33582-C61B-4BE0-9006-29410BAFDB9D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +30,10 @@ Global
 		{DCC33582-C61B-4BE0-9006-29410BAFDB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC33582-C61B-4BE0-9006-29410BAFDB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC33582-C61B-4BE0-9006-29410BAFDB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59982E33-777C-4F2D-88B9-550E53EF0935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59982E33-777C-4F2D-88B9-550E53EF0935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59982E33-777C-4F2D-88B9-550E53EF0935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59982E33-777C-4F2D-88B9-550E53EF0935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
