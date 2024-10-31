@@ -15,7 +15,7 @@ builder.Services.Configure<AppConfig>(builder.Configuration);
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
 
 builder.Services.AddSingleton<RandomNumberClient>();
-builder.Services.AddScoped<StringHandler>();
+builder.Services.AddSingleton<StringHandler>();
 builder.Services.AddSingleton<BlackListService>();
 builder.Services.AddSingleton<RequestLimitService>();
 

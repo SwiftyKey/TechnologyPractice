@@ -4,7 +4,7 @@ namespace TechnologyPractice.Models.Validation;
 
 public class SortNamesAttribute : ValidationAttribute
 {
-	private List<string> _names = new () { "QuickSort", "TreeSort" };
+	private readonly List<string> _names = new () { "QuickSort", "TreeSort" };
 
 	public override bool IsValid(object? value)
 	{
